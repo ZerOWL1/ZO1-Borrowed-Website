@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZO1.Tutorials.Core.Contexts;
 
 namespace ZO1.Tutorials.Core.Migrations
 {
     [DbContext(typeof(BorrowedContext))]
-    partial class BorrowedContextModelSnapshot : ModelSnapshot
+    [Migration("20211221164705_AddLenderAndItemNameColsToItemsTable")]
+    partial class AddLenderAndItemNameColsToItemsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

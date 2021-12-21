@@ -8,13 +8,14 @@ namespace ZO1.Tutorials.Core.Extensions
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
+            //Seed Item
             modelBuilder.Entity<Item>()
                 .HasData(
                     new List<Item>
                     {
-                        new Item{Id = 1, BorrowerName = "Book"},
-                        new Item{Id = 2, BorrowerName = "Phone"},
-                        new Item{Id = 3,BorrowerName = "Card"}
+                        new Item{Id = 1, BorrowerName = "Dennis", ItemName = "Book"},
+                        new Item{Id = 2, BorrowerName = "Frank", ItemName = "Phone"},
+                        new Item{Id = 3,BorrowerName = "John", ItemName = "Card"}
                     }
                 );
         }

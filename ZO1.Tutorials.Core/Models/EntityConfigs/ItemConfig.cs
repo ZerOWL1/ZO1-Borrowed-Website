@@ -11,6 +11,14 @@ namespace ZO1.Tutorials.Core.Models.EntityConfigs
             builder.HasKey(i => i.Id);
 
             builder.Property(i => i.BorrowerName)
+                .HasMaxLength(255)
+                .IsRequired();
+
+            builder.Property(i => i.ItemName)
+                .HasMaxLength(500)
+                .IsRequired();
+
+            builder.Property(i => i.Lender)
                 .HasMaxLength(255);
         }
     }
