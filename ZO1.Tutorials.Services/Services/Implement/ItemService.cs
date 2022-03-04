@@ -1,5 +1,5 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using ZO1.Tutorials.Core.Cores.UnitOfWork;
 using ZO1.Tutorials.Core.Models.Entities;
@@ -26,6 +26,36 @@ namespace ZO1.Tutorials.Services.Services.Implement
             {
                 var item = _mapper.Map<Item>(model);
                 _unitOfWork.Items.Add(item);
+                _unitOfWork.Complete();
+                return new ResponseResult();
+            }
+            catch (Exception e)
+            {
+                return new ResponseResult(e.Message);
+            }
+        }
+
+        public ResponseResult UpdateItem(CreateItemViewModel model)
+        {
+            try
+            {
+                var item = _mapper.Map<Item>(model);
+                _unitOfWork.Items.Update(item);
+                _unitOfWork.Complete();
+                return new ResponseResult();
+            }
+            catch (Exception e)
+            {
+                return new ResponseResult(e.Message);
+            }
+        }
+
+        public ResponseResult DeleteItem(int id)
+        {
+            try
+            {
+                var item = _unitOfWork.Items.Find(id);
+                _unitOfWork.Items.Delete(item, true);
                 _unitOfWork.Complete();
                 return new ResponseResult();
             }

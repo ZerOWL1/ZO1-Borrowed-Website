@@ -18,6 +18,20 @@ namespace ZO1.Tutorials.Core.Extensions
                         new Item{Id = 3,BorrowerName = "John", ItemName = "Card"}
                     }
                 );
+
+            //Seed Expense
+            modelBuilder.Entity<Expense>()
+                .HasData(
+                    new List<Expense>
+                    {
+                        new Expense{Id = 1, ExpenseName = "Tax", Amount = 10},
+                        new Expense{Id = 2, ExpenseName = "Bill", Amount = 25},
+                        new Expense{Id = 3, ExpenseName = "Payment", Amount = 30},
+                    }
+                );
+
+            //Seed Expense Type
+
         }
     }
 }

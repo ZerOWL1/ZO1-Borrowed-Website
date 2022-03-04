@@ -10,6 +10,8 @@ namespace ZO1.Tutorials.Core.Contexts
     public class BorrowedContext : DbContext
     {
         public DbSet<Item> Items { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<ExpenseType> ExpenseTypes { get; set; }
 
         public BorrowedContext(DbContextOptions<BorrowedContext> options) : base(options)
         {
@@ -22,6 +24,8 @@ namespace ZO1.Tutorials.Core.Contexts
 
             //Custom Entities Configs
             modelBuilder.ApplyConfiguration(new ItemConfig());
+            modelBuilder.ApplyConfiguration(new ExpenseConfig());
+            modelBuilder.ApplyConfiguration(new ExpenseTypeConfig());
 
             //Add Data
             modelBuilder.Seed();

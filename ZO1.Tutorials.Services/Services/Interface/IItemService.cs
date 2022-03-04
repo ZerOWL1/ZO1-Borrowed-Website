@@ -7,6 +7,8 @@ namespace ZO1.Tutorials.Services.Services.Interface
     public interface IItemService
     {
         ResponseResult CreateItem(CreateItemViewModel model);
+        ResponseResult UpdateItem(CreateItemViewModel model);
+        ResponseResult DeleteItem(int id);
 
         IEnumerable<CreateItemViewModel> GetAllItem();
     }

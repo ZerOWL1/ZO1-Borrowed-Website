@@ -1,0 +1,85 @@
+﻿@model List<ZO1.Tutorials.Services.ViewModels.Expenses.CreateExpenseViewModel>
+
+@{
+	ViewBag.Title = "Expense";
+	Layout = "_Layout";
+
+	var successMess = TempData["SuccessMess"] as string;
+	var errorMess = TempData["FailMess"] as string;
+}
+
+
+<div class="container p-3">
+	@if (!string.IsNullOrEmpty(successMess))
+	{
+	 <p class="text-success">@successMess</p>
+	}
+	@if (!string.IsNullOrEmpty(errorMess))
+	{
+	 <p class="text-danger">@errorMess</p>
+	}
+
+ <div class="row pt-4">
+  <div class="col-6">
+   <h2 class="text-primary">Expenses List</h2>
+  </div>
+  <div class="col-6 text-right">
+   <a class="btn btn-success text-decoration-none"
+			   asp-controller="Expense" asp-action="Create">
+	Create new Item
+   </a>
+  </div>
+ </div>
+ <br />
+	@if (Model.Count > 0)
+	{
+
+	 <table class="table table-bordered table-striped" style="width: 100%">
+	  <thead>
+	   <tr>
+		<th>Id</th>
+		<th>Expense</th>
+		<th>Amount</th>
+		<th>Expense Type</th>	
+		<th>Delete</th>
+	   </tr>
+	  </thead>
+	  <tbody>
+				@foreach (var item in Model)
+				{
+		   <tr>
+			<td width="20%">@item.Id</td>
+			<td width="20%">@item.ExpenseName</td>
+			<td width="20%">@item.Amount</td>
+			   <td width="20%">
+				   @if (item.ExpenseType is null)
+				   {
+				       <span>Unknown</span>
+				   }
+				   else
+				   {
+				       <span>@item.ExpenseType.Name</span>
+				   }
+			   </td>
+			<td style="display: flex">
+			 <a asp-controller="Expense" asp-action="Update" asp-route-id="@item.Id"
+					   style="margin-right: 10px" class="btn btn-warning btn-update">
+			  Update
+			 </a>
+			 <a asp-controller="Expense" asp-action="Delete" asp-route-id="@item.Id"
+					   class="btn btn-danger btn-delete">
+			  Delete
+			 </a>
+			</td>
+		   </tr>
+				}
+	  </tbody>
+	 </table>
+	}
+	else
+	{
+	 <p>No items create yet.</p>
+	}
+</div>
+
+

@@ -7,6 +7,15 @@
     <title>@ViewData["Title"] - BorrowedWeb</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    
+    <style>
+        .field-validation-error { 
+            color: red
+        }
+        .validation-summary-errors {
+            color: red
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -26,7 +35,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Item" asp-action="Index">Borrowed</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Index">Appointment</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Expense" asp-action="Index">Expense</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ExpenseType" asp-action="Index">Expense Type</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

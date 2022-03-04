@@ -9,13 +9,18 @@ namespace ZO1.Tutorials.Core.Cores.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private IItemRepository _itemRepository; 
+        private IItemRepository _itemRepository;
+        private IExpenseRepository _expenseRepository;
+        private IExpenseTypeRepository _expenseTypeRepository;
 
 
         public BorrowedContext BorrowedContext { get; }
 
 
         public IItemRepository Items => _itemRepository ??= new ItemRepository(BorrowedContext);
+        public IExpenseRepository Expenses => _expenseRepository ??= new ExpenseRepository(BorrowedContext);
+        public IExpenseTypeRepository ExpenseTypes => _expenseTypeRepository ??= new ExpenseTypeRepository(BorrowedContext);
+
 
         public UnitOfWork(BorrowedContext context)
         {

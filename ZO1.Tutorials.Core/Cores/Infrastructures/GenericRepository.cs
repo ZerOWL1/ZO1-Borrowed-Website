@@ -21,32 +21,32 @@ namespace ZO1.Tutorials.Core.Cores.Infrastructures
             _dbSet = context.Set<TEntity>();
         }
 
-        public TEntity Find(int entityId)
+        public virtual TEntity Find(int entityId)
         {
             return _dbSet.Find(entityId);
         }
 
-        public TEntity Find(Expression<Func<TEntity, bool>> predicate)
+        public virtual TEntity Find(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbSet.FirstOrDefault(predicate);
         }
 
-        public IEnumerable<TEntity> Finds(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> Finds(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbSet.Where(predicate);
         }
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             _dbSet.Add(entity);
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             Context.Entry(entity).State = EntityState.Modified;
         }
 
-        public void Delete(TEntity entity, bool isHardDeleted = false)
+        public virtual void Delete(TEntity entity, bool isHardDeleted = false)
         {
             if (isHardDeleted == false)
             {
@@ -58,7 +58,7 @@ namespace ZO1.Tutorials.Core.Cores.Infrastructures
             _dbSet.Remove(entity);
         }
 
-        public void Delete(int entityId, bool isHardDeleted = false)
+        public virtual void Delete(int entityId, bool isHardDeleted = false)
         {
             var entity = Find(e => e.Id == entityId);
             if (entity == null) return;
@@ -73,7 +73,7 @@ namespace ZO1.Tutorials.Core.Cores.Infrastructures
             _dbSet.Remove(entity);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return _dbSet.ToList();
         }
